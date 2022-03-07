@@ -15,5 +15,17 @@ model User {
   registeredAt DateTime?    
   updatedAt DateTime?   
   email String? 
-  name String   
+  name String?
+
+  @@map(name: "users") 
 } 
+
+model Task {
+  id Int @id @default(autoincrement())
+  title String 
+  isDone Boolean @default(false)
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+
+  @@map(name: "tasks")
+}
